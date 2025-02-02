@@ -403,6 +403,16 @@
       <Project>{8fd826f8-3739-44e6-8cc8-997122e53b8d}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\zconf.h.in">
+      <FileType>Document</FileType>
+      <Command>if not exist ..\..\..\zconf.h (
+		echo copy "%(FullPath)" ..\..\..\zconf.h
+		copy "%(FullPath)" ..\..\..\zconf.h)
+      </Command>
+      <Outputs>..\..\..\zconf.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

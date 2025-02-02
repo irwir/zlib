@@ -869,6 +869,16 @@
     <ClInclude Include="..\..\..\zlib.h" />
     <ClInclude Include="..\..\..\zutil.h" />
   </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\zconf.h.in">
+      <FileType>Document</FileType>
+      <Command>if not exist ..\..\..\zconf.h (
+		echo copy "%(FullPath)" ..\..\..\zconf.h
+		copy "%(FullPath)" ..\..\..\zconf.h)
+      </Command>
+      <Outputs>..\..\..\zconf.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
